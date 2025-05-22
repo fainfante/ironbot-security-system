@@ -1,0 +1,2 @@
+".envnode_modules/*.log" 
+.env node_modules/ *.log

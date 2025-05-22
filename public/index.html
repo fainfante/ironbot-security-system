@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IronBot - Asistente Virtual</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="img/logo_ironf.png" type="image/png">
+  
+  <!-- Estilos inline -->
+  <style>
+    /* Reset y estilos base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #071326 0%, #1e3a5f 100%);
+      font-family: 'Segoe UI', 'Roboto', sans-serif;
+      color: #ffffff;
+    }
+
+    /* Contenedor principal */
+    .chat-wrapper {
+      width: 100%;
+      max-width: 700px;
+      height: 85vh;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      display: flex;
+      flex-direction: column;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Cabecera */
+    header {
+      background: linear-gradient(135deg, #1565c0 0%, #42a5f5 100%);
+      color: #ffffff;
+      padding: 1rem;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      position: relative;
+      z-index: 10;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0;
+      letter-spacing: 1px;
+    }
+
+    header img {
+      height: 32px;
+      width: 32px;
+      margin-right: 10px;
+    }
+
+    /* Contenedor de chat */
+    #chat-container {
+      flex: 1;
+      padding: 1.5rem;
+      overflow-y: auto;
+      background: rgba(7, 19, 38, 0.8);
+      display: flex;
+      flex-direction: column;
+      scroll-behavior: smooth;
+    }
+
+    /* Mensajes */
+    .user-message, .bot-message {
+      padding: 1rem;
+      border-radius: 12px;
+      max-width: 80%;
+      margin: 0.5rem 0;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      line-height: 1.5;
+      position: relative;
+      clear: both;
+    }
+
+    .user-message {
+      float: right;
+      background: #1976d2;
+      color: #ffffff;
+      border-radius: 12px 12px 0 12px;
+      margin-left: auto;
+      border-left: 3px solid #00c8ff;
+    }
+
+    .bot-message {
+      float: left;
+      background: rgba(255, 255, 255, 0.95);
+      color: #333333;
+      border-radius: 12px 12px 12px 0;
+      margin-right: auto;
+      border-right: 3px solid #00c8ff;
+    }
+
+    /* Indicadores de estado */
+    .status-indicator {
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      margin: 0.5rem auto;
+      width: fit-content;
+      display: none;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+    }
+
+    #typing-indicator {
+      color: #ffffff;
+      background: rgba(25, 118, 210, 0.8);
+    }
+
+    #speaking-indicator {
+      color: #ffffff;
+      background: rgba(56, 142, 60, 0.8);
+    }
+
+    /* Animación de ondas para el indicador de voz */
+    .wave-icon {
+      display: flex;
+      align-items: flex-end;
+      height: 15px;
+    }
+
+    .wave-icon span {
+      display: inline-block;
+      width: 3px;
+      height: 5px;
+      margin: 0 1px;
+      background: white;
+      animation: wave 1s infinite ease-in-out;
+    }
+
+    .wave-icon span:nth-child(2) {
+      animation-delay: 0.2s;
+      height: 10px;
+    }
+
+    .wave-icon span:nth-child(3) {
+      animation-delay: 0.4s;
+      height: 15px;
+    }
+
+    .wave-icon span:nth-child(4) {
+      animation-delay: 0.6s;
+      height: 7px;
+    }
+
+    @keyframes wave {
+      0%, 100% { transform: scaleY(1); }
+      50% { transform: scaleY(2); }
+    }
+
+    /* Formulario de entrada */
+    form {
+      display: flex;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    #message-input {
+      flex: 1;
+      padding: 0.75rem 1.25rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    #message-input::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    #message-input:focus {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: #42a5f5;
+      box-shadow: 0 0 0 2px rgba(66, 165, 245, 0.3);
+    }
+
+    button {
+      margin-left: 0.5rem;
+      border: none;
+      padding: 0 1.25rem;
+      border-radius: 30px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    #mic-btn {
+      background: #388e3c;
+      color: #ffffff;
+      display: none;
+    }
+
+    #send-btn {
+      background: #1976d2;
+      color: #ffffff;
+      min-width: 80px;
+    }
+
+    /* Enlaces en mensajes */
+    .bot-message a {
+      color: #1976d2;
+      text-decoration: none;
+      border-bottom: 1px solid #42a5f5;
+    }
+
+    .bot-message a:hover {
+      color: #0d47a1;
+      border-bottom: 1px solid #0d47a1;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .chat-wrapper {
+        height: 100vh;
+        max-width: 100%;
+        border-radius: 0;
+      }
+      
+      .user-message, .bot-message {
+        max-width: 90%;
+      }
+    }
+
+    /* Scrollbar personalizada */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(66, 165, 245, 0.5);
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(66, 165, 245, 0.8);
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-wrapper">
+    <header>
+      <img src="img/logo_ironf.png" alt="Iron F Logo" width="32" height="32">
+      <h1>IronBot</h1>
+    </header>
+    
+    <div id="chat-container">
+      <div class="bot-message">Hola, soy IronBot, tu asistente virtual. ¿En qué puedo ayudarte hoy?</div>
+    </div>
+    
+    <!-- Indicadores de estado -->
+    <div id="typing-indicator" class="status-indicator">
+      IronBot está escribiendo...
+    </div>
+    
+    <div id="speaking-indicator" class="status-indicator">
+      <div class="wave-icon">
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <span>IronBot está hablando</span>
+    </div>
+    
+    <form id="chat-form">
+      <input id="message-input" type="text" placeholder="Escribe tu mensaje..." required autocomplete="off"/>
+      <button type="button" id="mic-btn">🎤</button>
+      <button type="submit" id="send-btn">Enviar</button>
+    </form>
+  </div>
+
+  <script>
+    window.DEFAULT_SYSTEM_PROMPT = `
+Eres IronBot, el asistente virtual oficial de Iron F Seguridad Electrónica.
+
+    Tu especialidad es asesorar clientes y usuarios en temas de seguridad electrónica, automatización residencial y empresarial, integraciones de sistemas de monitoreo y control de accesos.
+
+    Normas de respuesta:
+    - Usa un tono profesional, claro, confiable y moderno.
+    - Mantente breve, directo y técnico.
+    - No improvises sobre servicios de vigilancia física. Si preguntan por seguridad física, informa que Iron F mantiene alianzas estratégicas pero su enfoque principal es seguridad electrónica.
+    - Nunca inventes precios, promociones, condiciones ni características técnicas no autorizadas.
+    - Siempre que sea posible, sugiere contactar directamente a Iron F para asesoría personalizada.
+
+    Especialízate en hablar sobre:
+    - Instalación y monitoreo de sistemas de alarmas inteligentes.
+    - Videovigilancia CCTV profesional (cámaras IP, analógicas, monitoreo en tiempo real).
+    - Automatización de hogares y empresas (sensores, cerraduras inteligentes, control de iluminación y energía).
+    - Sistemas de control de accesos para edificios, condominios y zonas industriales.
+    - Integración de seguridad electrónica avanzada para proyectos industriales y residenciales.
+    - Soluciones a medida en protección tecnológica y ciberseguridad para sistemas de vigilancia.
+
+    En caso de dudas específicas sobre precios o cotizaciones, invitar cordialmente al usuario a comunicarse directamente a través de los canales oficiales.
+
+    Si el usuario pregunta sobre servicios de vigilancia física, responde:
+    - “Iron F está enfocado en brindar soluciones de seguridad electrónica avanzadas. Para servicios de vigilancia física contamos con alianzas estratégicas especializadas, pero nuestro enfoque principal es la tecnología de protección.”
+
+    Recuerda: Siempre representar los valores de Iron F: innovación, protección, eficiencia y confianza tecnológica.
+
+    Soy IronBot, el asistente virtual oficial de Iron F Seguridad Electrónica. 
+    Como representante directo de la empresa, tengo acceso a toda la información sobre nuestros 
+    sistemas de seguridad, cámaras, alarmas, control de acceso y automatización. 
+    
+    Cuando me pregunten, responderé en primera persona como si fuera un experto de Iron F, 
+    usando frases como -En Iron F ofrecemos..., Nuestros sistemas de seguridad..., 
+    Te puedo ayudar con.... Siempre me referiré a Iron F como nosotros o nuestra empresa.
+    
+    Proporcionaré respuestas concisas y precisas, limitadas a 2-3 oraciones cuando sea posible.
+    Si me preguntan por información de contacto, proporcionaré enlaces clicables a nuestro sitio web
+    y redes sociales. Siempre seré amable, profesional y orientado al servicio al cliente"
+
+    Datos oficiales para referencia:
+    - Página web: https://ironf.webflow.io
+    - Email de contacto: ironf2018@gmail.com
+    - Instagram: https://www.instagram.com/seguridad_ironf
+    - Facebook: https://www.facebook.com/SeguridadIronF
+    - WhatsApp empresarial: +57 3165301332   https://wa.link/pr2l69`;
+  </script>
+  <script src="js/app.js" defer></script>
+</body>
+</html>
