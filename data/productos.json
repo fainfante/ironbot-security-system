@@ -1,0 +1,198 @@
+{
+  "camaras": {
+    "inalambrica_6mp": {
+      "nombre": "Cámara Inalámbrica 6MP",
+      "precio": 490000,
+      "descripcion": "Cámara WiFi 6MP con visión nocturna y app móvil"
+    },
+    "inalambrica_10mp": {
+      "nombre": "Cámara Inalámbrica 10MP Doble Lente 360°",
+      "precio": 630000,
+      "descripcion": "Cámara premium con doble lente, rotación 360° y zoom digital"
+    },
+    "analoga_2mp": {
+      "nombre": "Cámara Análoga 2MP",
+      "precio": 210000,
+      "descripcion": "Cámara básica análoga con buena calidad de imagen"
+    },
+    "analoga_4mp": {
+      "nombre": "Cámara Análoga 4MP",
+      "precio": 280000,
+      "descripcion": "Cámara análoga de alta resolución"
+    },
+    "analoga_8mp": {
+      "nombre": "Cámara Análoga 8MP",
+      "precio": 770000,
+      "descripcion": "Cámara análoga premium de máxima resolución"
+    },
+    "ip_4mp": {
+      "nombre": "Cámara IP 4MP",
+      "precio": 420000,
+      "descripcion": "Cámara IP con acceso remoto y grabación en nube"
+    }
+  },
+  "dvr_almacenamiento": {
+    "dvr_4ch": {
+      "nombre": "DVR 4 Canales",
+      "precio": 420000,
+      "descripcion": "Grabador digital para hasta 4 cámaras"
+    },
+    "dvr_8ch": {
+      "nombre": "DVR 8 Canales",
+      "precio": 588000,
+      "descripcion": "Grabador digital para hasta 8 cámaras"
+    },
+    "dvr_16ch": {
+      "nombre": "DVR 16 Canales",
+      "precio": 868000,
+      "descripcion": "Grabador digital para hasta 16 cámaras"
+    },
+    "disco_1tb": {
+      "nombre": "Disco Duro 1TB",
+      "precio": 210000,
+      "descripcion": "Almacenamiento para 30 días de grabación continua"
+    },
+    "disco_2tb": {
+      "nombre": "Disco Duro 2TB",
+      "precio": 350000,
+      "descripcion": "Almacenamiento para 60 días de grabación continua"
+    },
+    "disco_4tb": {
+      "nombre": "Disco Duro 4TB",
+      "precio": 588000,
+      "descripcion": "Almacenamiento para 120 días de grabación continua"
+    }
+  },
+  "alarmas": {
+    "basica": {
+      "nombre": "Alarma Inalámbrica Básica",
+      "precio": 952000,
+      "descripcion": "2 sensores de movimiento + central + app móvil"
+    },
+    "premium": {
+      "nombre": "Alarma Inalámbrica Premium",
+      "precio": 1540000,
+      "descripcion": "4 sensores + sirena + central + app móvil con notificaciones"
+    },
+    "empresarial": {
+      "nombre": "Alarma Inalámbrica Empresarial",
+      "precio": 2380000,
+      "descripcion": "8 sensores + 2 sirenas + central + app móvil + monitoreo 24/7"
+    },
+    "comunitaria": {
+      "nombre": "Alarma Comunitaria",
+      "precio": 0,
+      "descripcion": "Sistema para comunidades hasta 250 usuarios - Cotización especial"
+    }
+  },
+  "control_acceso": {
+    "biometrico": {
+      "nombre": "Control de Acceso Biométrico",
+      "precio": 1232000,
+      "descripcion": "Lector de huella dactilar con app móvil"
+    },
+    "tarjeta_rfid": {
+      "nombre": "Tarjeta RFID",
+      "precio": 28000,
+      "descripcion": "Tarjeta de acceso por proximidad"
+    },
+    "teclado_digital": {
+      "nombre": "Teclado Digital",
+      "precio": 420000,
+      "descripcion": "Control de acceso por código PIN"
+    }
+  },
+  "instalacion": {
+    "basica": {
+      "nombre": "Instalación Básica",
+      "precio": 140000,
+      "descripcion": "Instalación estándar por punto"
+    },
+    "premium": {
+      "nombre": "Instalación Premium",
+      "precio": 210000,
+      "descripcion": "Instalación con canalización y acabados"
+    },
+    "empresarial": {
+      "nombre": "Instalación Empresarial",
+      "precio": 280000,
+      "descripcion": "Instalación profesional con certificación"
+    }
+  },
+  "paquetes": {
+    "hogar_basico": {
+      "nombre": "Paquete Hogar Básico",
+      "precio": 2030000,
+      "precio_individual": 2322000,
+      "ahorro": 292000,
+      "descripcion": "Perfecto para casas hasta 100m²",
+      "incluye": [
+        "4x Cámaras Análogas 4MP",
+        "1x DVR 4 Canales",
+        "1x Disco Duro 1TB",
+        "1x Alarma Básica (2 sensores)",
+        "Instalación Premium incluida",
+        "App móvil para control total",
+        "Garantía 2 años"
+      ]
+    },
+    "hogar_premium": {
+      "nombre": "Paquete Hogar Premium",
+      "precio": 3080000,
+      "precio_individual": 3500000,
+      "ahorro": 420000,
+      "descripcion": "Ideal para casas hasta 150m²",
+      "incluye": [
+        "3x Cámaras Inalámbricas 6MP",
+        "2x Cámaras Análogas 4MP",
+        "1x DVR 8 Canales",
+        "1x Disco Duro 2TB",
+        "1x Alarma Premium (4 sensores)",
+        "Instalación Premium incluida",
+        "App móvil avanzada",
+        "Soporte técnico 24/7",
+        "Garantía 2 años"
+      ]
+    },
+    "negocio_completo": {
+      "nombre": "Paquete Negocio Completo",
+      "precio": 4172000,
+      "precio_individual": 4760000,
+      "ahorro": 588000,
+      "descripcion": "Seguridad integral para negocios hasta 300m²",
+      "incluye": [
+        "4x Cámaras Inalámbricas 10MP",
+        "4x Cámaras IP 4MP",
+        "1x DVR 16 Canales",
+        "1x Disco Duro 4TB",
+        "1x Alarma Empresarial (8 sensores)",
+        "1x Control de Acceso Biométrico",
+        "Instalación Empresarial",
+        "Monitoreo 24/7",
+        "App empresarial",
+        "Garantía 2 años extendida"
+      ]
+    },
+    "empresarial": {
+      "nombre": "Paquete Empresarial",
+      "precio": 12250000,
+      "precio_individual": 14000000,
+      "ahorro": 1750000,
+      "descripcion": "Máxima seguridad para empresas 400m² en adelante",
+      "incluye": [
+        "8x Cámaras Inalámbricas 10MP",
+        "8x Cámaras IP 4MP",
+        "2x DVR 16 Canales",
+        "2x Disco Duro 4TB",
+        "2x Alarma Empresarial",
+        "3x Control de Acceso Biométrico",
+        "Sistema de intercomunicación",
+        "Instalación Empresarial completa",
+        "Monitoreo 24/7 premium",
+        "App empresarial avanzada",
+        "Mantenimiento mensual incluido",
+        "Garantía 3 años"
+      ]
+    }
+  }
+}

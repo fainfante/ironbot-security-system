@@ -1,2 +1,4 @@
-".envnode_modules/*.log" 
-.env node_modules/ *.log
+node_modules/
+.env
+*.log
+.DS_Store

@@ -26,13 +26,50 @@ app.get('*.css', (req, res, next) => {
 // Sirve front
 app.use(express.static(path.join(__dirname, 'public')));
 
-// API
-app.use('/api/chat', require('./routes/chat'));
-app.use('/api/status', require('./routes/status'));
-app.use('/api/voice', require('./routes/voice'));
+// DEBUGGING - Verificar cada ruta individualmente
+console.log('🔍 Verificando rutas...');
+
+try {
+    const chatRoutes = require('./routes/chat');
+    console.log('✅ Chat routes:', typeof chatRoutes);
+    app.use('/api/chat', chatRoutes);
+} catch (error) {
+    console.error('❌ Error en chat routes:', error.message);
+}
+
+try {
+    const statusRoutes = require('./routes/status');
+    console.log('✅ Status routes:', typeof statusRoutes);
+    app.use('/api/status', statusRoutes);
+} catch (error) {
+    console.error('❌ Error en status routes:', error.message);
+}
+
+try {
+    const voiceRoutes = require('./routes/voice');
+    console.log('✅ Voice routes:', typeof voiceRoutes);
+    app.use('/api/voice', voiceRoutes);
+} catch (error) {
+    console.error('❌ Error en voice routes:', error.message);
+}
+
+try {
+    const cotizacionRoutes = require('./routes/cotizacion');
+    console.log('✅ Cotización routes:', typeof cotizacionRoutes);
+    app.use('/api/cotizacion', cotizacionRoutes);
+} catch (error) {
+    console.error('❌ Error en cotización routes:', error.message);
+}
+
+console.log('🔍 Todas las rutas verificadas');
 
 // Error handler
-app.use(require('./utils/errorHandler'));
+try {
+    app.use(require('./utils/errorHandler'));
+    console.log('✅ Error handler cargado');
+} catch (error) {
+    console.error('❌ Error en error handler:', error.message);
+}
 
 // Start
 const PORT = process.env.PORT || 3000;
@@ -45,4 +82,8 @@ app.listen(PORT, () => {
 │                                         │
 └─────────────────────────────────────────┘
   `);
+  // DEBUGGING TEMPORAL - Agregar al final del server.js
+console.log('🔍 Debugging variables de entorno:');
+console.log('- ELEVEN_VOICE_ID completo:', process.env.ELEVEN_VOICE_ID);
+console.log('- ELEVENLABS_API_KEY (primeros 8 chars):', process.env.ELEVENLABS_API_KEY?.substring(0, 8));
 });

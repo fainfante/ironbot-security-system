@@ -1,0 +1,183 @@
+{
+  "reglas_cotizacion": {
+    "descuentos_volumen": {
+      "camaras": {
+        "3_a_5": 0.05,
+        "6_a_10": 0.10,
+        "11_a_20": 0.15,
+        "mas_de_20": 0.20
+      },
+      "general": {
+        "5000000_a_10000000": 0.03,
+        "10000000_a_20000000": 0.05,
+        "20000000_a_50000000": 0.08,
+        "mas_de_50000000": 0.12
+      }
+    },
+    "recomendaciones_por_tipo": {
+      "casa": {
+        "area_pequena": {
+          "metros_min": 0,
+          "metros_max": 80,
+          "camaras_recomendadas": 2,
+          "productos": ["analoga_2mp", "domo_interior"],
+          "paquete_sugerido": "hogar_basico"
+        },
+        "area_mediana": {
+          "metros_min": 81,
+          "metros_max": 150,
+          "camaras_recomendadas": 4,
+          "productos": ["inalambrica_6mp", "analoga_4mp"],
+          "paquete_sugerido": "hogar_premium"
+        },
+        "area_grande": {
+          "metros_min": 151,
+          "metros_max": 999999,
+          "camaras_recomendadas": 6,
+          "productos": ["inalambrica_10mp", "analoga_8mp"],
+          "paquete_sugerido": "personalizado"
+        }
+      },
+      "apartamento": {
+        "area_pequena": {
+          "metros_min": 0,
+          "metros_max": 60,
+          "camaras_recomendadas": 2,
+          "productos": ["domo_interior", "inalambrica_6mp"],
+          "paquete_sugerido": "hogar_basico"
+        },
+        "area_mediana": {
+          "metros_min": 61,
+          "metros_max": 120,
+          "camaras_recomendadas": 3,
+          "productos": ["inalambrica_6mp", "domo_interior"],
+          "paquete_sugerido": "hogar_premium"
+        }
+      },
+      "negocio": {
+        "area_pequena": {
+          "metros_min": 0,
+          "metros_max": 100,
+          "camaras_recomendadas": 4,
+          "productos": ["analoga_4mp", "inalambrica_6mp"],
+          "paquete_sugerido": "negocio_completo"
+        },
+        "area_mediana": {
+          "metros_min": 101,
+          "metros_max": 300,
+          "camaras_recomendadas": 6,
+          "productos": ["analoga_8mp", "inalambrica_10mp"],
+          "paquete_sugerido": "personalizado"
+        },
+        "area_grande": {
+          "metros_min": 301,
+          "metros_max": 999999,
+          "camaras_recomendadas": 10,
+          "productos": ["inalambrica_10mp", "analoga_8mp"],
+          "paquete_sugerido": "empresarial_avanzado"
+        }
+      },
+      "empresa": {
+        "area_pequena": {
+          "metros_min": 0,
+          "metros_max": 200,
+          "camaras_recomendadas": 6,
+          "productos": ["inalambrica_10mp", "analoga_8mp"],
+          "paquete_sugerido": "negocio_completo"
+        },
+        "area_mediana": {
+          "metros_min": 201,
+          "metros_max": 500,
+          "camaras_recomendadas": 10,
+          "productos": ["inalambrica_10mp", "analoga_8mp"],
+          "paquete_sugerido": "empresarial_avanzado"
+        },
+        "area_grande": {
+          "metros_min": 501,
+          "metros_max": 999999,
+          "camaras_recomendadas": 15,
+          "productos": ["inalambrica_10mp", "analoga_8mp"],
+          "paquete_sugerido": "personalizado"
+        }
+      },
+      "bodega": {
+        "area_mediana": {
+          "metros_min": 0,
+          "metros_max": 500,
+          "camaras_recomendadas": 6,
+          "productos": ["analoga_8mp", "inalambrica_10mp"],
+          "paquete_sugerido": "negocio_completo"
+        },
+        "area_grande": {
+          "metros_min": 501,
+          "metros_max": 999999,
+          "camaras_recomendadas": 12,
+          "productos": ["analoga_8mp", "inalambrica_10mp"],
+          "paquete_sugerido": "empresarial_avanzado"
+        }
+      }
+    },
+    "dvr_por_camaras": {
+      "1_a_4": "dvr_4ch",
+      "5_a_8": "dvr_8ch",
+      "9_a_16": "dvr_16ch"
+    },
+    "almacenamiento_por_camaras": {
+      "1_a_4": "disco_1tb",
+      "5_a_8": "disco_2tb",
+      "9_a_16": "disco_2tb_doble"
+    },
+    "instalacion_recomendada": {
+      "basica": {
+        "hasta_camaras": 4,
+        "hasta_sensores": 2
+      },
+      "premium": {
+        "mas_de_camaras": 4,
+        "mas_de_sensores": 2,
+        "incluye_biometrico": true
+      }
+    }
+  },
+  "palabras_clave": {
+    "solicitud_cotizacion": [
+      "cotizar",
+      "cotización",
+      "precio",
+      "presupuesto",
+      "costo",
+      "valor",
+      "cuánto cuesta",
+      "cuanto vale",
+      "tarifas",
+      "lista de precios"
+    ],
+    "tipos_propiedad": {
+      "casa": ["casa", "vivienda", "hogar", "residencia", "domicilio"],
+      "apartamento": ["apartamento", "apto", "piso", "departamento"],
+      "negocio": ["negocio", "comercio", "tienda", "local", "establecimiento"],
+      "empresa": ["empresa", "corporativo", "oficina", "compañía"],
+      "bodega": ["bodega", "almacén", "depósito", "warehouse"]
+    },
+    "productos": {
+      "camaras": ["cámara", "camaras", "videovigilancia", "cctv", "seguridad"],
+      "alarmas": ["alarma", "alarmas", "sensor", "sensores", "detección"],
+      "control_acceso": ["control de acceso", "biométrico", "huella", "tarjeta", "rfid"],
+      "dvr": ["dvr", "grabador", "grabación", "almacenamiento"]
+    }
+  },
+  "configuracion_sistema": {
+    "moneda": "COP",
+    "simbolo_moneda": "$",
+    "iva": 0.19,
+    "incluye_iva": false,
+    "garantia_meses": 12,
+    "tiempo_instalacion_horas": 4,
+    "contacto": {
+      "empresa": "Iron F Seguridad Electrónica",
+      "whatsapp": "+57 3165301332",
+      "email": "ironf2018@gmail.com",
+      "web": "https://ironf.webflow.io"
+    }
+  }
+}
