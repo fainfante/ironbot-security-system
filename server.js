@@ -83,13 +83,13 @@ console.log('🔍 Todas las rutas verificadas');
 
 // Ruta de salud para monitoreo
 app.get('/health', (req, res) => {
-    res.json({
-        status: 'healthy',
-        timestamp: new Date().toISOString(),
-        uptime: process.uptime(),
-        version: '2.0.0',
-        environment: process.env.NODE_ENV || 'development'
-    });
+    const formattedResponse = aiResponse
+    .replace(/\. /g, '.\n\n')
+    .replace(/• /g, '\n• ')
+    .replace(/\d+\./g, '\n$&')
+    .replace(/--/g, '\n\n--');
+
+res.json({ response: formattedResponse });
 });
 
 // Ruta principal - servir index.html
