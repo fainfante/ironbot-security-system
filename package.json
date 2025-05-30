@@ -1,29 +1,28 @@
 {
   "name": "ironbot-security-system",
-  "version": "1.0.0",
-  "description": "Bot inteligente para asesoramiento en seguridad electrónica",
+  "version": "2.0.0",
+  "description": "IronBot V2 - Asistente inteligente de Iron F Seguridad Electrónica",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js"
   },
-<<<<<<< HEAD
-  "dependencies": {
-    "axios": "^1.9.0",
-    "dotenv": "^16.x",
-    "express": "^4.21.2",
-    "fs": "^0.0.1-security",
-    "openai": "^4.x",
-    "path": "^0.12.7"
-=======
   "engines": {
-    "node": "18.x"
->>>>>>> 38234b928f964f8fe9ae870dc1b35268020ef7bf
+    "node": ">=16.0.0"
   },
   "dependencies": {
     "express": "^4.18.2",
-    "openai": "^4.0.0",
-    "dotenv": "^16.0.0",
-    "axios": "^1.0.0"
-  }
+    "dotenv": "^16.3.1",
+    "openai": "^4.20.1",
+    "node-fetch": "^2.7.0",
+    "cors": "^2.8.5"
+  },
+  "keywords": [
+    "chatbot",
+    "security",
+    "iron-f",
+    "ai"
+  ],
+  "author": "Iron F Seguridad Electrónica",
+  "license": "MIT"
 }
