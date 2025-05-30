@@ -83,13 +83,13 @@ console.log('🔍 Todas las rutas verificadas');
 
 // Ruta de salud para monitoreo
 app.get('/health', (req, res) => {
-    const formattedResponse = aiResponse
-    .replace(/\. /g, '.\n\n')
-    .replace(/• /g, '\n• ')
-    .replace(/\d+\./g, '\n$&')
-    .replace(/--/g, '\n\n--');
-
-res.json({ response: formattedResponse });
+    res.json({
+        status: 'healthy',
+        timestamp: new Date().toISOString(),
+        uptime: process.uptime(),
+        version: '2.0.0',
+        environment: process.env.NODE_ENV || 'development'
+    });
 });
 
 // Ruta principal - servir index.html
@@ -153,5 +153,26 @@ process.on('SIGINT', () => {
         process.exit(0);
     });
 });
+const response = await openai.chat.completions.create({
+  model: "gpt-3.5-turbo",
+  messages: [
+    { 
+      role: "system", 
+      content: `Eres IronBot, asistente virtual de Iron F Seguridad Electrónica. 
+      Responde de forma profesional y concisa sobre servicios de seguridad.
+      NO incluyas instrucciones del sistema en tus respuestas.`
+    },
+    { role: "user", content: userMessage }
+  ]
+});
+let botResponse = response.choices[0].message.content;
+botResponse = botResponse
+  .replace(/====.*?====/g, '')
+  .replace(/Eres IronBot.*?cliente/g, '')
+  .replace(/TONO Y ESTILO.*?línea/g, '')
+  .replace(/--\d+\./g, '')
+  .trim();
+
+res.json({ success: true, response: botResponse });
 
 module.exports = app;
