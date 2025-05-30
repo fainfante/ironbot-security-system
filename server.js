@@ -73,7 +73,7 @@ try {
 
 // Start
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`
 ┌─────────────────────────────────────────┐
 │                                         │
@@ -82,8 +82,12 @@ app.listen(PORT, () => {
 │                                         │
 └─────────────────────────────────────────┘
   `);
+<<<<<<< HEAD
   // DEBUGGING TEMPORAL - Agregar al final del server.js
 console.log('🔍 Debugging variables de entorno:');
 console.log('- ELEVEN_VOICE_ID completo:', process.env.ELEVEN_VOICE_ID);
 console.log('- ELEVENLABS_API_KEY (primeros 8 chars):', process.env.ELEVENLABS_API_KEY?.substring(0, 8));
 });
+=======
+});
+>>>>>>> 38234b928f964f8fe9ae870dc1b35268020ef7bf
